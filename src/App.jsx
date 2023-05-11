@@ -12,7 +12,24 @@ function App() {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log('hello')
+    
+    //if button is pressed without anything in the textbox
+    if(!name){
+      //display alert
+    }
+    //while editing
+    else if(name && isEditing){
+      //deal with editing
+    }
+    // adding new element in array
+    else{
+      //show alert
+      // create new item
+      const newItem = {id: new Date().getTime().toString(), title:name}
+      setList([...list,newItem])
+
+      setName('')
+    }
   }
 
   return (
@@ -23,15 +40,18 @@ function App() {
 
       <div className='form-control'>
         <input type='text' className='grocery' placeholder='eg. 4 eggs' value={name} onChange={(e)=>setName(e.target.value)}></input>
+
+
         <button type='submit' className='submit-btn'>
           {isEditing? 'edit':'submit'}
         </button>
       </div>
     </form>
+    {list.length > 0 &&
       <div className='grocery-container'>
-        <List/>
+         <List items={list}/>
         <button className='clear-btn'>Clear items</button>
-      </div>
+      </div>}
     </section>
     )
 }
