@@ -59,13 +59,17 @@ function App() {
       // create new item
       const newItem = { id: new Date().getTime().toString(), title: name }
       setList([...list, newItem])
-
       setName('')
+      showAlert(true,'Item added to the list','green','white')
     }
   }
 
 
 
+  const clearList = () => {
+    setList([])
+    showAlert(true,'List is now empty','yellow','black')
+  }
 
 
 
@@ -92,7 +96,7 @@ function App() {
       {list.length > 0 &&
         <div>
           <List items={list} />
-          <button className='clear-btn'>Clear items</button>
+          <button className='clear-btn' onClick={clearList}>Clear items</button>
         </div>}
     </section>
   )
