@@ -21,7 +21,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false)
   const [editId, setEditId] = useState(null)
 
-  const [alert, setAlert] = useState({ show: true, msg: 'Hi! I am your shoppin-buddy.', backgroundColor: 'grey', textColor: 'black' })   //skyblue - black, yellow-black,  green - white, brown - white
+  const [alert, setAlert] = useState({ show: true, msg: 'Hi! I am your shoppin-buddy.', backgroundColor: 'skyblue', textColor: 'black' })   //skyblue - black, yellow-black,  green - white, brown - white
 
   const showAlert = (show = false, msg = "", backgroundColor = "", textColor = "") => {
     setAlert({ show, msg, backgroundColor, textColor })
