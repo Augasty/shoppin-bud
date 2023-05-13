@@ -4,10 +4,10 @@ import List from './List'
 import Alert from './Alert'
 
 
-const getLocalStorage =()=>{
+const getLocalStorage = () => {
   let list = localStorage.getItem('list')
 
-  if(list){
+  if (list) {
     return JSON.parse(list)
   }
   return []
@@ -33,14 +33,14 @@ function App() {
   useEffect(() => {
     let alternate = true
     const interval = setInterval(() => {
-     if(alternate){
-      alternate = !alternate
-      showAlert(true,'Hi! I am your shoppin-buddy.','skyblue','black')
-     }
-     else{
-      alternate = !alternate
-      showAlert(true,'Please enter something.','yellow','black')
-     }
+      if (alternate) {
+        alternate = !alternate
+        showAlert(true, 'Hi! I am your shoppin-buddy.', 'skyblue', 'black')
+      }
+      else {
+        alternate = !alternate
+        showAlert(true, 'Please enter something.', 'yellow', 'black')
+      }
     }, 2000);
     return () => clearInterval(interval);
   }, [list]);
@@ -104,18 +104,18 @@ function App() {
 
 
   //setting up localstorage
-  useEffect(()=>{
-    localStorage.setItem('list',JSON.stringify(list))
-  },[list])
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list))
+  }, [list])
 
   return (
-    <section style={{ borderRadius: '8px', border :'1px solid white', padding: '0.6em 1.2em'}}>
+    <section style={{ borderRadius: '8px', border: '1px solid white', padding: '0.6em 1.2em' }}>
       <form className='grocery-form' onSubmit={handleSubmit}>
         {alert.show && <Alert props={alert} removeAlert={showAlert} list={list} />}
         <h3>Shoppin-bud</h3>
 
         <div className='form-control'>
-          <input type='text' style={{textAlign:'center'}} placeholder='eg. 4 eggs' value={name} onChange={(e) => setName(e.target.value)}></input>
+          <input type='text' style={{ textAlign: 'center' }} placeholder='eg. 4 eggs' value={name} onChange={(e) => setName(e.target.value)}></input>
 
 
           <button type='submit' className='submit-btn'>
@@ -127,7 +127,7 @@ function App() {
         <div>
           <List items={list} remove={removeItem} edit={editItem} />
           <div></div>
-          <button style={{ marginTop: '1em'}} onClick={clearList}>Clear items</button>
+          <button style={{ marginTop: '1em' }} onClick={clearList}>Clear items</button>
         </div>}
     </section>
   )
